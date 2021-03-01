@@ -5,6 +5,7 @@
  */
 package pl.maciej.szczypta.kalkulator;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import javax.swing.JOptionPane;
@@ -430,7 +431,11 @@ public class MS_kalkulator extends javax.swing.JFrame {
 
     private void jMenuItemIleDniMiedzyDatamiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIleDniMiedzyDatamiActionPerformed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-        JOptionPane.showInputDialog("Wprowadz date w foracie (dd mm yyyy):");
+        String data = JOptionPane.showInputDialog("Wprowadz date w foracie (dd mm yyyy):");
+        
+        LocalDate ldnow = LocalDate.now();
+        LocalDate ldinput = LocalDate.parse(data, formatter);
+        System.out.println(ldnow+"    "+ldinput);
     }//GEN-LAST:event_jMenuItemIleDniMiedzyDatamiActionPerformed
 
     /**
