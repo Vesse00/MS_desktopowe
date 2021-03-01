@@ -5,6 +5,10 @@
  */
 package pl.maciej.szczypta.kalkulator;
 
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author gromm
@@ -54,6 +58,7 @@ public class MS_kalkulator extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItemClose = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItemIleDniMiedzyDatami = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -194,7 +199,16 @@ public class MS_kalkulator extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Tools");
+
+        jMenuItemIleDniMiedzyDatami.setText("Dni");
+        jMenuItemIleDniMiedzyDatami.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemIleDniMiedzyDatamiActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemIleDniMiedzyDatami);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -414,6 +428,11 @@ public class MS_kalkulator extends javax.swing.JFrame {
         System.exit(1);
     }//GEN-LAST:event_jMenuItemCloseActionPerformed
 
+    private void jMenuItemIleDniMiedzyDatamiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIleDniMiedzyDatamiActionPerformed
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+        JOptionPane.showInputDialog("Wprowadz date w foracie (dd mm yyyy):");
+    }//GEN-LAST:event_jMenuItemIleDniMiedzyDatamiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -471,6 +490,7 @@ public class MS_kalkulator extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemClose;
+    private javax.swing.JMenuItem jMenuItemIleDniMiedzyDatami;
     private javax.swing.JTextField jTextFieldWys;
     // End of variables declaration//GEN-END:variables
 }
