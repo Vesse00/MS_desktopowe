@@ -7,6 +7,7 @@ package pl.maciej.szczypta.kalkulator;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 
@@ -436,6 +437,9 @@ public class MS_kalkulator extends javax.swing.JFrame {
         LocalDate ldnow = LocalDate.now();
         LocalDate ldinput = LocalDate.parse(data, formatter);
         System.out.println(ldnow+"    "+ldinput);
+        
+        long days = ChronoUnit.DAYS.between(ldinput, ldnow);
+        System.out.println("Ilosc dni miedzy dniami"+days);
     }//GEN-LAST:event_jMenuItemIleDniMiedzyDatamiActionPerformed
 
     /**
