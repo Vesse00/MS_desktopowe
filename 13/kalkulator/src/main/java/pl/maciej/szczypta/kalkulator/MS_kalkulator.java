@@ -434,12 +434,16 @@ public class MS_kalkulator extends javax.swing.JFrame {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
         String data = JOptionPane.showInputDialog("Wprowadz date w foracie (dd mm yyyy):");
         
+        if(data != null && data.length()==10){
         LocalDate ldnow = LocalDate.now();
         LocalDate ldinput = LocalDate.parse(data, formatter);
         System.out.println(ldnow+"    "+ldinput);
         
         long days = ChronoUnit.DAYS.between(ldinput, ldnow);
         System.out.println("Ilosc dni miedzy dniami"+days);
+        
+        JOptionPane.showMessageDialog(rootPane,""+days, "ilosc dni", HEIGHT);
+        }
     }//GEN-LAST:event_jMenuItemIleDniMiedzyDatamiActionPerformed
 
     /**
