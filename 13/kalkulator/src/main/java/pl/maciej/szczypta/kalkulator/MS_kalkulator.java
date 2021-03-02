@@ -7,6 +7,7 @@ package pl.maciej.szczypta.kalkulator;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 import javax.swing.JOptionPane;
@@ -432,18 +433,32 @@ public class MS_kalkulator extends javax.swing.JFrame {
 
     private void jMenuItemIleDniMiedzyDatamiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIleDniMiedzyDatamiActionPerformed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-        String data = JOptionPane.showInputDialog("Wprowadz date w foracie (dd mm yyyy):");
+        String info = "\n";
         
-        if(data != null && data.length()==10){
-        LocalDate ldnow = LocalDate.now();
-        LocalDate ldinput = LocalDate.parse(data, formatter);
-        System.out.println(ldnow+"    "+ldinput);
-        
-        long days = ChronoUnit.DAYS.between(ldinput, ldnow);
-        System.out.println("Ilosc dni miedzy dniami"+days);
-        
-        JOptionPane.showMessageDialog(rootPane,""+days, "ilosc dni", HEIGHT);
+        while(!info.equals("ok")){
+            String data = JOptionPane.showInputDialog("Wprowadz date w foracie (dd mm yyyy):"+""+info);
+
+            if(data != null && data.length()==10){
+                LocalDate ldnow = LocalDate.now();
+
+                try{
+                    LocalDate ldinput = LocalDate.parse(data, formatter);
+                    System.out.println(ldnow+"    "+ldinput);
+
+                    long days = ChronoUnit.DAYS.between(ldinput, ldnow);
+                    System.out.println("Ilosc dni miedzy dniami"+days);
+
+                    JOptionPane.showMessageDialog(rootPane,""+days, "ilosc dni", HEIGHT);
+                    info = "ok";
+                }catch(DateTimeParseException ex){
+                    info = "Wprowadzono zly format";
+                }
+
+            }else{
+                info ="ok";
+            }
         }
+        
     }//GEN-LAST:event_jMenuItemIleDniMiedzyDatamiActionPerformed
 
     /**
