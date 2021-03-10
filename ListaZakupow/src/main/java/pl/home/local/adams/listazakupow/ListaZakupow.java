@@ -200,7 +200,7 @@ public class ListaZakupow extends javax.swing.JFrame{
     }//GEN-LAST:event_jTFCoKupilesActionPerformed
 
     private void jButtonZapiszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZapiszActionPerformed
-        jTADzisiejszeZakupy.setText(jTFCoKupiles.getText()+";"+jTFWartosc.getText()+";"+jComboBoxType.getSelectedItem()+";"+jTextFieldData.getText());
+        jTADzisiejszeZakupy.setText(jTADzisiejszeZakupy.getText()+"\n"+jTFCoKupiles.getText()+";"+jTFWartosc.getText()+";"+jComboBoxType.getSelectedItem()+";"+jTextFieldData.getText());
         jTFCoKupiles.setText("");
         jTFWartosc.setText("");
         jComboBoxType.setSelectedItem("Item 1");
