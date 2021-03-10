@@ -42,8 +42,8 @@ public class ListaZakupow extends javax.swing.JFrame{
         jLabel6 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jComboBoxType = new javax.swing.JComboBox<>();
+        jButtonZapisz = new javax.swing.JButton();
         jPListaZakupow = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -52,6 +52,12 @@ public class ListaZakupow extends javax.swing.JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Wpisz co kupiłeś");
+
+        jTFCoKupiles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFCoKupilesActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Podaj wartość");
 
@@ -69,9 +75,14 @@ public class ListaZakupow extends javax.swing.JFrame{
 
         jLabel7.setText("Typ zakupionego towaru");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setText("ZAPISZ");
+        jButtonZapisz.setText("ZAPISZ");
+        jButtonZapisz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonZapiszActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPWprowadzZakupyLayout = new javax.swing.GroupLayout(jPWprowadzZakupy);
         jPWprowadzZakupy.setLayout(jPWprowadzZakupyLayout);
@@ -103,7 +114,7 @@ public class ListaZakupow extends javax.swing.JFrame{
                         .addComponent(jTextField4))
                     .addGroup(jPWprowadzZakupyLayout.createSequentialGroup()
                         .addGroup(jPWprowadzZakupyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addGroup(jPWprowadzZakupyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +122,7 @@ public class ListaZakupow extends javax.swing.JFrame{
                             .addComponent(jTextFieldData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPWprowadzZakupyLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(jButtonZapisz)))
                 .addContainerGap())
         );
         jPWprowadzZakupyLayout.setVerticalGroup(
@@ -128,11 +139,11 @@ public class ListaZakupow extends javax.swing.JFrame{
                     .addComponent(jTFCoKupiles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFWartosc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPWprowadzZakupyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonZapisz))
                 .addGap(18, 18, 18)
                 .addGroup(jPWprowadzZakupyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,6 +195,18 @@ public class ListaZakupow extends javax.swing.JFrame{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTFCoKupilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCoKupilesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCoKupilesActionPerformed
+
+    private void jButtonZapiszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZapiszActionPerformed
+        jTADzisiejszeZakupy.setText(jTFCoKupiles.getText()+";"+jTFWartosc.getText()+";"+jComboBoxType.getSelectedItem()+";"+jTextFieldData.getText());
+        jTFCoKupiles.setText("");
+        jTFWartosc.setText("");
+        jComboBoxType.setSelectedItem("Item 1");
+        jTextFieldData.setText("");
+    }//GEN-LAST:event_jButtonZapiszActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -220,10 +243,13 @@ public class ListaZakupow extends javax.swing.JFrame{
         jTFCoKupiles.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                
-                if(e.getKeyChar() == KeyEvent.VK_ENTER){
-                    System.out.println("Wprowadzono dane po naciśnięciu ENTERA");
-                    jTADzisiejszeZakupy.setText(jTFCoKupiles.getText());
+                char vr = e.getKeyChar();
+                if(vr == KeyEvent.VK_ENTER || vr >= 'A' && vr<= 'Z' || vr >= 'a' && vr <='z' || vr == KeyEvent.VK_SPACE){
+                    jTFCoKupiles.setEditable(true);
+                    //System.out.println("Wprowadzono dane po naciśnięciu ENTERA");
+                    //jTADzisiejszeZakupy.setText(jTFCoKupiles.getText());
+                }else{
+                    jTFCoKupiles.setEditable(false);
                 }
                 
             }
@@ -245,7 +271,7 @@ public class ListaZakupow extends javax.swing.JFrame{
             @Override
             public void keyTyped(KeyEvent e) {
                 char ch = e.getKeyChar();
-                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE){
+                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_MINUS){
                     jTextFieldData.setEditable(true);
                     System.out.println("NACIŚNIĘTO CYFRĘ: "+ch);
                 }else{
@@ -289,8 +315,8 @@ public class ListaZakupow extends javax.swing.JFrame{
     
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButtonZapisz;
+    private javax.swing.JComboBox<String> jComboBoxType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
