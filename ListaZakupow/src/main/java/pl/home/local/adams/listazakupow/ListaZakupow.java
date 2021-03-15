@@ -270,9 +270,19 @@ public class ListaZakupow extends javax.swing.JFrame{
         jTextFieldData.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+                String temp = jTextFieldData.getText();
                 char ch = e.getKeyChar();
-                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_MINUS){
+                if((ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE /*|| ch == KeyEvent.VK_MINUS*/) && 
+                        (temp.length() < 10 || ch == KeyEvent.VK_BACK_SPACE)
+                    ){
                     jTextFieldData.setEditable(true);
+                    
+                    if(temp.length() == 5 || temp.length()==7 && ch != KeyEvent.VK_BACK_SPACE){
+                        jTextFieldData.setText(temp+'-');
+                    }else{
+                        
+                    }
+                    
                     System.out.println("NACIŚNIĘTO CYFRĘ: "+ch);
                 }else{
                     jTextFieldData.setEditable(false);
