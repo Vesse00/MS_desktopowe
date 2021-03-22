@@ -7,6 +7,11 @@ package pl.maciej.szczypta.sprawdzian22mar2021;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -65,6 +70,11 @@ public class MaciejSzczypta extends javax.swing.JFrame {
         jTextFieldCzlon2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         jButtonSave.setText("ZAPISZ");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,6 +140,10 @@ public class MaciejSzczypta extends javax.swing.JFrame {
     private void jTextFieldCzlon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCzlon1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCzlon1ActionPerformed
+
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+        Zapis();
+    }//GEN-LAST:event_jButtonSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,6 +232,21 @@ public class MaciejSzczypta extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void Zapis(){
+        String pierw = jTextFieldCzlon1.getText();
+        String drugie = jTextFieldCzlon2.getText();
+        File f = new File("maciej_szczypta.txt");
+        try {
+            FileWriter  fw = new FileWriter(f);
+            fw.write(pierw+"/"+drugie);
+            fw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(MaciejSzczypta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSave;
