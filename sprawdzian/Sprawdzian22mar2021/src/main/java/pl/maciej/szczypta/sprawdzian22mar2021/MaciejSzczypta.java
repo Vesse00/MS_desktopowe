@@ -186,7 +186,7 @@ public class MaciejSzczypta extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char vr = e.getKeyChar();
-                if(vr == KeyEvent.VK_ENTER || vr >= 'A' && vr<= 'F' || vr == KeyEvent.VK_MINUS){
+                if(vr == KeyEvent.VK_ENTER || vr >= 'A' && vr<= 'F' || vr == KeyEvent.VK_MINUS || vr == KeyEvent.VK_BACK_SPACE){
                     jTextFieldCzlon1.setEditable(true);
                     //System.out.println("Wprowadzono dane po naciśnięciu ENTERA");
                     //jTADzisiejszeZakupy.setText(jTFCoKupiles.getText());
@@ -212,7 +212,7 @@ public class MaciejSzczypta extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char vr = e.getKeyChar();
-                if(vr == KeyEvent.VK_ENTER || vr >= '0' && vr<= '9'){
+                if(vr == KeyEvent.VK_ENTER || vr >= '0' && vr<= '9' || vr == KeyEvent.VK_BACK_SPACE){
                     jTextFieldCzlon2.setEditable(true);
                     //System.out.println("Wprowadzono dane po naciśnięciu ENTERA");
                     //jTADzisiejszeZakupy.setText(jTFCoKupiles.getText());
