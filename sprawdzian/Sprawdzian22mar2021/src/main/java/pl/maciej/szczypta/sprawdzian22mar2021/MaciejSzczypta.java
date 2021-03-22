@@ -238,7 +238,7 @@ public class MaciejSzczypta extends javax.swing.JFrame {
             fw.write(pierw+"/"+drugie);
             fw.close();
         } catch (IOException ex) {
-            Logger.getLogger(MaciejSzczypta.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ERR: "+ex.toString());
         }
     }
     
