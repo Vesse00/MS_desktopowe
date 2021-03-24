@@ -20,6 +20,7 @@ public class ListaZakupow extends javax.swing.JFrame{
         addKeyListenerTojTFCoKupiles();
         addKeyListenerTojTFWartosc();
         addKeyListenerTojTFData();
+        addToolTipToElements();
     }
 
     @SuppressWarnings("unchecked")
@@ -38,9 +39,9 @@ public class ListaZakupow extends javax.swing.JFrame{
         jScrollPane1 = new javax.swing.JScrollPane();
         jTADzisiejszeZakupy = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTextFieldToday = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jTextFieldWeek = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jComboBoxType = new javax.swing.JComboBox<>();
         jButtonZapisz = new javax.swing.JButton();
@@ -107,11 +108,11 @@ public class ListaZakupow extends javax.swing.JFrame{
                     .addGroup(jPWprowadzZakupyLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField5))
+                        .addComponent(jTextFieldWeek))
                     .addGroup(jPWprowadzZakupyLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(31, 31, 31)
-                        .addComponent(jTextField4))
+                        .addComponent(jTextFieldToday))
                     .addGroup(jPWprowadzZakupyLayout.createSequentialGroup()
                         .addGroup(jPWprowadzZakupyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBoxType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,11 +151,11 @@ public class ListaZakupow extends javax.swing.JFrame{
                     .addGroup(jPWprowadzZakupyLayout.createSequentialGroup()
                         .addGroup(jPWprowadzZakupyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldToday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPWprowadzZakupyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldWeek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -266,6 +267,8 @@ public class ListaZakupow extends javax.swing.JFrame{
         });
     }
     
+    
+    
     private void addKeyListenerTojTFData(){
         jTextFieldData.addKeyListener(new KeyListener() {
             @Override
@@ -277,7 +280,7 @@ public class ListaZakupow extends javax.swing.JFrame{
                     ){
                     jTextFieldData.setEditable(true);
                     
-                    if(temp.length() == 5 || temp.length()==7 && ch != KeyEvent.VK_BACK_SPACE){
+                    if(temp.length() == 4 || temp.length()==7 && ch != KeyEvent.VK_BACK_SPACE){
                         jTextFieldData.setText(temp+'-');
                     }else{
                         
@@ -303,15 +306,34 @@ public class ListaZakupow extends javax.swing.JFrame{
         jTFWartosc.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+                String temp = jTFWartosc.getText();
                 char ch = e.getKeyChar();
-                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE){
-                    jTFWartosc.setEditable(true);
-                    System.out.println("NACIŚNIĘTO CYFRĘ: "+ch);
+                
+                //System.out.println("Przecinek"+temp.indexOf(".")+" dlugosc tekstu: "+temp.length());
+                
+               
+                
+                
+                if(temp.contains(".")){
+                    String[] splitted = temp.split(".");
+                    if(splitted[1].length() < 2){
+                        if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE){
+                        jTFWartosc.setEditable(true);
+                        //System.out.println("NACIŚNIĘTO CYFRĘ: "+ch);
+                        }else{
+                            jTFWartosc.setEditable(false);
+                        }
+                    }
+                    
                 }else{
-                    jTFWartosc.setEditable(false);
+                    if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == '.'){
+                    jTFWartosc.setEditable(true);
+                    //System.out.println("NACIŚNIĘTO CYFRĘ: "+ch);
+                    }else{
+                        jTFWartosc.setEditable(false);
+                    }
                 }
             }
-
             @Override
             public void keyPressed(KeyEvent e) {
             }
@@ -320,6 +342,26 @@ public class ListaZakupow extends javax.swing.JFrame{
             public void keyReleased(KeyEvent e) {
             }
         });
+    }
+    
+    private void addToolTipToElements(){
+        jTFCoKupiles.setToolTipText("<html>"
+                + "<h3>Wprowadz tekst</h3>"
+                + "<p>Nie uzywaj polskich znakow</p>"
+                + "</html>");
+        jTFWartosc.setToolTipText("<html>"
+                + "<h3>Wprowadz wartosc</h3>"
+                + "</html>");
+        jTextFieldData.setToolTipText("<html>"
+                + "<h3>Wprowadz date</h3>"
+                + "<p>Rok mies dzien</p>"
+                + "</html>");
+        jTextFieldToday.setToolTipText("<html>"
+                + "<h3>Wprowadz dzisiejsze wydatki</h3>"
+                + "</html>");
+        jTextFieldWeek.setToolTipText("<html>"
+                + "<h3>Wprowadz tygodniowe wydatki</h3>"
+                + "</html>");
     }
     
     
@@ -344,9 +386,9 @@ public class ListaZakupow extends javax.swing.JFrame{
     private javax.swing.JTextField jTFCoKupiles;
     private javax.swing.JTextField jTFWartosc;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextFieldData;
+    private javax.swing.JTextField jTextFieldToday;
+    private javax.swing.JTextField jTextFieldWeek;
     // End of variables declaration//GEN-END:variables
 
 
