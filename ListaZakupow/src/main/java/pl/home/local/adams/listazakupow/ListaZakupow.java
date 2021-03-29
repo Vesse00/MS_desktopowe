@@ -213,7 +213,7 @@ public class ListaZakupow extends javax.swing.JFrame{
         jTADzisiejszeZakupy.setText(jTADzisiejszeZakupy.getText()+"\n"+jTFCoKupiles.getText()+";"+jTFWartosc.getText()+";"+jComboBoxType.getSelectedItem()+";"+jTextFieldData.getText());
         
         
-        File f = new File(file_name);
+        /*File f = new File(file_name);
         try {
             FileWriter fw = new FileWriter(f,true);
             fw.append(jTFCoKupiles.getText()+";"+jTFWartosc.getText()+";"+jComboBoxType.getSelectedItem()+";"+jTextFieldData.getText());
@@ -225,7 +225,11 @@ public class ListaZakupow extends javax.swing.JFrame{
         jTFCoKupiles.setText("");
         jTFWartosc.setText("");
         jComboBoxType.setSelectedItem("Item 1");
-        jTextFieldData.setText("");
+        jTextFieldData.setText("");*/
+        FileUtils fu = new FileUtils();
+        String text = jTFCoKupiles.getText().trim()+";"+jTFWartosc.getText().trim()+";"
+                +jComboBoxType.getSelectedItem().toString().trim()+";"+jTextFieldData.getText().trim();
+        fu.saveToFile(text);
         
     }//GEN-LAST:event_jButtonZapiszActionPerformed
 
