@@ -211,20 +211,21 @@ public class ListaZakupow extends javax.swing.JFrame{
 
     private void jButtonZapiszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZapiszActionPerformed
         jTADzisiejszeZakupy.setText(jTADzisiejszeZakupy.getText()+"\n"+jTFCoKupiles.getText()+";"+jTFWartosc.getText()+";"+jComboBoxType.getSelectedItem()+";"+jTextFieldData.getText());
+        
+        
+        File f = new File(file_name);
+        try {
+            FileWriter fw = new FileWriter(f,true);
+            fw.append(jTFCoKupiles.getText()+";"+jTFWartosc.getText()+";"+jComboBoxType.getSelectedItem()+";"+jTextFieldData.getText());
+            fw.close();
+        }catch (IOException ex) {
+            System.out.println("ERR: "+ex.toString());
+        }
+        
         jTFCoKupiles.setText("");
         jTFWartosc.setText("");
         jComboBoxType.setSelectedItem("Item 1");
         jTextFieldData.setText("");
-        
-        File f = new File(file_name);
-        FileWriter fw;
-        try {
-            fw = new FileWriter(f,true);
-            fw.append(jTFCoKupiles.getText()+";"+jTFWartosc.getText()+";"+jComboBoxType.getSelectedItem()+";"+jTextFieldData.getText());
-            fw.close();
-        }catch (IOException ex) {
-            System.out.println(ex.toString());
-        }
         
     }//GEN-LAST:event_jButtonZapiszActionPerformed
 
