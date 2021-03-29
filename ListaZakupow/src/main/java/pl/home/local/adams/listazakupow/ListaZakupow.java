@@ -2,6 +2,9 @@ package pl.home.local.adams.listazakupow;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -61,6 +64,12 @@ public class ListaZakupow extends javax.swing.JFrame{
         });
 
         jLabel2.setText("Podaj wartość");
+
+        jTFWartosc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFWartoscActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Data zakupu");
 
@@ -206,7 +215,22 @@ public class ListaZakupow extends javax.swing.JFrame{
         jTFWartosc.setText("");
         jComboBoxType.setSelectedItem("Item 1");
         jTextFieldData.setText("");
+        
+        File f = new File(file_name);
+        FileWriter fw;
+        try {
+            fw = new FileWriter(f,true);
+            fw.append(jTFCoKupiles.getText()+";"+jTFWartosc.getText()+";"+jComboBoxType.getSelectedItem()+";"+jTextFieldData.getText());
+            fw.close();
+        }catch (IOException ex) {
+            System.out.println(ex.toString());
+        }
+        
     }//GEN-LAST:event_jButtonZapiszActionPerformed
+
+    private void jTFWartoscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFWartoscActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFWartoscActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -364,7 +388,8 @@ public class ListaZakupow extends javax.swing.JFrame{
                 + "</html>");
     }
     
-    
+    private String file_name = "lista_zakopow.csv";
+    private String product_names = "product_names.csv";
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonZapisz;
