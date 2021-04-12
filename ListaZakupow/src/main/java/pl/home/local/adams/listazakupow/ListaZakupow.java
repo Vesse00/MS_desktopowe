@@ -34,6 +34,7 @@ public class ListaZakupow extends javax.swing.JFrame{
         addKeyListenerTojTFData();
         addToolTipToElements();
         filljCDProducts();
+        //zliczanie();
     }
 
     @SuppressWarnings("unchecked")
@@ -58,7 +59,7 @@ public class ListaZakupow extends javax.swing.JFrame{
         jLabel7 = new javax.swing.JLabel();
         jComboBoxType = new javax.swing.JComboBox<>();
         jButtonZapisz = new javax.swing.JButton();
-        jTextFieldSuma = new javax.swing.JTextField();
+        jTextFieldIlosc = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jPListaZakupow = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -106,7 +107,7 @@ public class ListaZakupow extends javax.swing.JFrame{
             }
         });
 
-        jLabel8.setText("Suma:");
+        jLabel8.setText("Ilosc produktow");
 
         javax.swing.GroupLayout jPWprowadzZakupyLayout = new javax.swing.GroupLayout(jPWprowadzZakupy);
         jPWprowadzZakupy.setLayout(jPWprowadzZakupyLayout);
@@ -154,12 +155,11 @@ public class ListaZakupow extends javax.swing.JFrame{
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPWprowadzZakupyLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPWprowadzZakupyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPWprowadzZakupyLayout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(27, 27, 27))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPWprowadzZakupyLayout.createSequentialGroup()
-                                        .addComponent(jTextFieldSuma, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap())))))))
+                                    .addGroup(jPWprowadzZakupyLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jTextFieldIlosc, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel8))
+                                .addGap(27, 27, 27))))))
         );
         jPWprowadzZakupyLayout.setVerticalGroup(
             jPWprowadzZakupyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +194,7 @@ public class ListaZakupow extends javax.swing.JFrame{
                         .addGap(54, 54, 54)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldSuma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldIlosc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -405,6 +405,8 @@ public class ListaZakupow extends javax.swing.JFrame{
         });
     }
     
+
+    
     
     
     private void filljCDProducts(){
@@ -478,7 +480,7 @@ public class ListaZakupow extends javax.swing.JFrame{
     private javax.swing.JTextField jTFWartosc;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextFieldData;
-    private javax.swing.JTextField jTextFieldSuma;
+    private javax.swing.JTextField jTextFieldIlosc;
     private javax.swing.JTextField jTextFieldToday;
     private javax.swing.JTextField jTextFieldWeek;
     // End of variables declaration//GEN-END:variables

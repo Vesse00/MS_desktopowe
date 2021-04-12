@@ -35,6 +35,7 @@ public class FileUtils {
     public String readFromFile(){
         try {
             String message ="";
+            int ile = 0;
             Scanner sc = new Scanner(new File(file_name));
             
             while(sc.hasNext()){
@@ -42,8 +43,9 @@ public class FileUtils {
                 temp = temp.replaceAll(";","\t");
                 message += temp+"\n";*/
                 message += sc.nextLine().replaceAll(";", "\t")+"\n";
+                ile++;
             }
-            
+            System.out.println("Ile: "+ile);
             return message;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FileUtils.class.getName()).log(Level.SEVERE, null, ex);
