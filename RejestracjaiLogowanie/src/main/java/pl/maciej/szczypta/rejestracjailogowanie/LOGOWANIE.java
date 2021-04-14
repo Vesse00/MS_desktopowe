@@ -110,9 +110,9 @@ public class LOGOWANIE extends javax.swing.JFrame {
                 .addComponent(jLabelComfirm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jButtonReg)
-                .addGap(19, 19, 19))
+                .addGap(25, 25, 25))
         );
 
         jTabbedPane1.addTab("REJESTRACJA", jPanelReg);
