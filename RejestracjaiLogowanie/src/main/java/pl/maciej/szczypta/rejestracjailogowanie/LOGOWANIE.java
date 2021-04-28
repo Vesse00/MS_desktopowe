@@ -40,11 +40,12 @@ public class LOGOWANIE extends javax.swing.JFrame {
         jLabelEmail = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
         jLabelPass = new javax.swing.JLabel();
-        jTextFieldPass = new javax.swing.JTextField();
+        jPasswordFieldPass = new javax.swing.JPasswordField();
         jLabelComfirm = new javax.swing.JLabel();
-        jTextFieldCPass = new javax.swing.JTextField();
+        jPasswordFieldCPass = new javax.swing.JPasswordField();
         jButtonReg = new javax.swing.JButton();
         jLabelWrongUser = new javax.swing.JLabel();
+        jLabelPassErr = new javax.swing.JLabel();
         jPanelLog = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -88,21 +89,25 @@ public class LOGOWANIE extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRegLayout.createSequentialGroup()
-                        .addGroup(jPanelRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelReg)
-                            .addComponent(jLabelUsername)
-                            .addComponent(jLabelEmail)
-                            .addComponent(jTextFieldEmail)
-                            .addComponent(jLabelPass)
-                            .addComponent(jTextFieldPass)
-                            .addComponent(jLabelComfirm)
-                            .addComponent(jTextFieldCPass, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                            .addComponent(jTextFieldUsername))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelWrongUser, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
-                    .addGroup(jPanelRegLayout.createSequentialGroup()
                         .addComponent(jButtonReg)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanelRegLayout.createSequentialGroup()
+                        .addGroup(jPanelRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPasswordFieldCPass, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(jPasswordFieldPass)
+                            .addComponent(jLabelReg, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelUsername, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPass, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelComfirm, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldUsername, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelWrongUser, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                            .addGroup(jPanelRegLayout.createSequentialGroup()
+                                .addComponent(jLabelPassErr, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanelRegLayout.setVerticalGroup(
@@ -113,9 +118,9 @@ public class LOGOWANIE extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabelUsername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelWrongUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelWrongUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -123,11 +128,13 @@ public class LOGOWANIE extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabelPass)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPasswordFieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPassErr, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelComfirm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldCPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPasswordFieldCPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jButtonReg)
                 .addGap(25, 25, 25))
@@ -238,6 +245,7 @@ public class LOGOWANIE extends javax.swing.JFrame {
     public void Register(){
         Username();
         Email();
+        Password();
     }
     
     
@@ -279,7 +287,7 @@ public class LOGOWANIE extends javax.swing.JFrame {
     }
     
     public void Email(){
-        String email = jTextFieldEmail.getText();
+        /*String email = jTextFieldEmail.getText();
         String err = "";
         String[] a = email.split("@");
         
@@ -292,7 +300,7 @@ public class LOGOWANIE extends javax.swing.JFrame {
             System.out.println(a[i]+" ");
         }
         
-        if(a[1].length() < 1){
+        /*if(a[1].length() < 1){
             //PO @ nie ma niczego
             err += "podaj prawidlowy email";
         }
@@ -303,7 +311,22 @@ public class LOGOWANIE extends javax.swing.JFrame {
         */
     }
     
-    
+    public void Password(){
+        String pass = jPasswordFieldPass.getText();
+        String Cpass = jPasswordFieldCPass.getText();
+        
+        String Err = "";
+        
+
+        if(pass.equals(Cpass)){
+            System.out.println("Hasla takie same");
+        }else{
+            System.out.println("Hasla nie sa takie same");
+            Err +="Hasla nie sa takie same";
+        }
+        
+        jLabelPassErr.setText(Err);
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -315,17 +338,18 @@ public class LOGOWANIE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelComfirm;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelPass;
+    private javax.swing.JLabel jLabelPassErr;
     private javax.swing.JLabel jLabelReg;
     private javax.swing.JLabel jLabelUsername;
     private javax.swing.JLabel jLabelWrongUser;
     private javax.swing.JPanel jPanelLog;
     private javax.swing.JPanel jPanelReg;
+    private javax.swing.JPasswordField jPasswordFieldCPass;
+    private javax.swing.JPasswordField jPasswordFieldPass;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextFieldCPass;
     private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldPass;
     private javax.swing.JTextField jTextFieldUsername;
     // End of variables declaration//GEN-END:variables
 }

@@ -58,23 +58,29 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jButtonReg" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jPasswordFieldCPass" pref="170" max="32767" attributes="0"/>
+                                  <Component id="jPasswordFieldPass" max="32767" attributes="0"/>
                                   <Component id="jLabelReg" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelUsername" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextFieldEmail" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabelPass" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldPass" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabelComfirm" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldCPass" alignment="0" pref="170" max="32767" attributes="0"/>
                                   <Component id="jTextFieldUsername" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelWrongUser" pref="264" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jButtonReg" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelWrongUser" pref="250" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabelPassErr" min="-2" pref="205" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -89,9 +95,9 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabelUsername" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextFieldUsername" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelWrongUser" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jTextFieldUsername" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabelEmail" min="-2" max="-2" attributes="0"/>
@@ -100,11 +106,14 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabelPass" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextFieldPass" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jPasswordFieldPass" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelPassErr" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabelComfirm" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextFieldCPass" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPasswordFieldCPass" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="51" max="32767" attributes="0"/>
                       <Component id="jButtonReg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -152,7 +161,7 @@
                 <Property name="text" type="java.lang.String" value="Password"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldPass">
+            <Component class="javax.swing.JPasswordField" name="jPasswordFieldPass">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelComfirm">
               <Properties>
@@ -162,7 +171,7 @@
                 <Property name="text" type="java.lang.String" value="Comfirm Password"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldCPass">
+            <Component class="javax.swing.JPasswordField" name="jPasswordFieldCPass">
             </Component>
             <Component class="javax.swing.JButton" name="jButtonReg">
               <Properties>
@@ -173,6 +182,8 @@
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelWrongUser">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelPassErr">
             </Component>
           </SubComponents>
         </Container>
