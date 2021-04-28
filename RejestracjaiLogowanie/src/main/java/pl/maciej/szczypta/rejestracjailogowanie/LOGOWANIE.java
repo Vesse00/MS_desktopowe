@@ -309,6 +309,10 @@ public class LOGOWANIE extends javax.swing.JFrame {
         String tak = a[1];
         String[] czlon = tak.split(".");
         */
+        
+        String email = jTextFieldEmail.getText();
+        String err = "";
+        
     }
     
     public void Password(){
