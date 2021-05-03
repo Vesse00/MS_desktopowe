@@ -210,6 +210,12 @@ public class LOGOWANIE extends javax.swing.JFrame {
 
     private void jButtonRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegActionPerformed
         Register();
+        
+        
+        jTextFieldUsername.setText("");
+        jTextFieldEmail.setText("");
+        jPasswordFieldPass.setText("");
+        jPasswordFieldCPass.setText("");
     }//GEN-LAST:event_jButtonRegActionPerformed
 
     /**
@@ -254,18 +260,10 @@ public class LOGOWANIE extends javax.swing.JFrame {
     public static String zlymail = "";
     
     public void Register(){
-        if(err == "" && blad == ""){
             Username();
             Email();
             Password();
             Zapis();
-        }else if(err != "" || blad != ""){
-            jTextFieldUsername.setText("");
-            jTextFieldEmail.setText("");
-            jPasswordFieldPass.setText("");
-            jPasswordFieldCPass.setText("");
-        }
-        
     }
     
     
