@@ -7,7 +7,12 @@ package pl.maciej.szczypta.rejestracjailogowanie;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -242,16 +247,31 @@ public class LOGOWANIE extends javax.swing.JFrame {
         });
     }
     
+    public static String user;
+    public static String pass;
+    public static String err = "";
+    public static String blad = "";
+    public static String zlymail = "";
+    
     public void Register(){
-        Username();
-        Email();
-        Password();
+        if(err == "" && blad == ""){
+            Username();
+            Email();
+            Password();
+            Zapis();
+        }else if(err != "" || blad != ""){
+            jTextFieldUsername.setText("");
+            jTextFieldEmail.setText("");
+            jPasswordFieldPass.setText("");
+            jPasswordFieldCPass.setText("");
+        }
+        
     }
     
     
     public void Username(){
-        String err = "";
-        String user = jTextFieldUsername.getText();
+        err = "";
+        user = jTextFieldUsername.getText();
         if(user.length()< 2 || user.length() >20){
             System.out.println();
             err += " musi byc 2-20 liter ";
@@ -287,49 +307,45 @@ public class LOGOWANIE extends javax.swing.JFrame {
     }
     
     public void Email(){
-        /*String email = jTextFieldEmail.getText();
-        String err = "";
-        String[] a = email.split("@");
-        
-        if(a.length > 2){
-            //EXAMLE@email.com   -- mail ma wiecej niz jedna @
-            err = "podaj prawidlowy email";
-        }
-        
-        for(int i =0;i< a.length;i++){
-            System.out.println(a[i]+" ");
-        }
-        
-        /*if(a[1].length() < 1){
-            //PO @ nie ma niczego
-            err += "podaj prawidlowy email";
-        }
-        
-        /* NIE DZIALA
-        String tak = a[1];
-        String[] czlon = tak.split(".");
-        */
-        
         String email = jTextFieldEmail.getText();
-        String err = "";
+        zlymail = "";
         
+        String[] mail = email.split("@");
+        //System.out.println(mail[0]+" "+ mail[1]);
+        
+        if(mail.length < 1){
+            
+        }
     }
     
     public void Password(){
-        String pass = jPasswordFieldPass.getText();
+        pass = jPasswordFieldPass.getText();
         String Cpass = jPasswordFieldCPass.getText();
         
-        String Err = "";
+        blad = "";
         
 
         if(pass.equals(Cpass)){
             System.out.println("Hasla takie same");
         }else{
             System.out.println("Hasla nie sa takie same");
-            Err +="Hasla nie sa takie same";
+            blad +="Hasla nie sa takie same";
         }
         
-        jLabelPassErr.setText(Err);
+        jLabelPassErr.setText(blad);
+    }
+    
+    public void Zapis(){
+        
+        
+        File f = new File("user.csv");
+        try { 
+            FileWriter fw = new FileWriter(f, true);
+            fw.write(user+";"+ pass+"\n");
+            fw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(LOGOWANIE.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 
