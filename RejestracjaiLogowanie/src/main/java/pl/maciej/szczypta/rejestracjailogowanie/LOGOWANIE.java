@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +28,13 @@ public class LOGOWANIE extends javax.swing.JFrame {
         initComponents();
         
     }
+    
+    public static String user;
+    public static String pass;
+    public static String mail;
+    public static String err = "";
+    public static String blad = "";
+    public static String zlymail = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +59,7 @@ public class LOGOWANIE extends javax.swing.JFrame {
         jButtonReg = new javax.swing.JButton();
         jLabelWrongUser = new javax.swing.JLabel();
         jLabelPassErr = new javax.swing.JLabel();
+        jLabelEmailErr = new javax.swing.JLabel();
         jPanelLog = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -111,7 +120,9 @@ public class LOGOWANIE extends javax.swing.JFrame {
                         .addGroup(jPanelRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelWrongUser, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addGroup(jPanelRegLayout.createSequentialGroup()
-                                .addComponent(jLabelPassErr, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanelRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabelPassErr, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                                    .addComponent(jLabelEmailErr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -129,7 +140,9 @@ public class LOGOWANIE extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabelEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEmailErr, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelPass)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -253,11 +266,7 @@ public class LOGOWANIE extends javax.swing.JFrame {
         });
     }
     
-    public static String user;
-    public static String pass;
-    public static String err = "";
-    public static String blad = "";
-    public static String zlymail = "";
+    
     
     public void Register(){
             Username();
@@ -305,14 +314,31 @@ public class LOGOWANIE extends javax.swing.JFrame {
     }
     
     public void Email(){
-        String email = jTextFieldEmail.getText();
+        mail = jTextFieldEmail.getText();
         zlymail = "";
         
-        String[] mail = email.split("@");
-        //System.out.println(mail[0]+" "+ mail[1]);
+        if(mail.contains("@") && mail.contains(".")){
+            if(mail.charAt(0)=='@'){
+                zlymail = "Podano nie poprawny adres EMAIL!";
+            }else{
+                String hosting[] = mail.split("@");
+                if(hosting[1].charAt(0)=='.'){
+                    zlymail = "Podano nie poprawny adres EMAIL!";
+                }
+                
+                String kropa = hosting[1];
+                String[] kropa2 = kropa.split("\\.");
+                if(kropa2[1].isEmpty()==true){
+                    zlymail = "Podano nie poprawny adres EMAIL!";
+                }
+            }
+        }else{
+            zlymail = "Podano nie poprawny adres EMAIL!";
+        }
         
-        if(mail.length < 1){
-            
+        System.out.println("Bledy w email: "+zlymail);      
+        if(zlymail != ""){
+            jLabelEmailErr.setText(zlymail);
         }
     }
     
@@ -334,16 +360,22 @@ public class LOGOWANIE extends javax.swing.JFrame {
     }
     
     public void Zapis(){
-        
-        
         File f = new File("user.csv");
-        try { 
-            FileWriter fw = new FileWriter(f, true);
-            fw.write(user+";"+ pass+"\n");
-            fw.close();
-        } catch (IOException ex) {
-            Logger.getLogger(LOGOWANIE.class.getName()).log(Level.SEVERE, null, ex);
+        
+        if(err == "" && blad == "" && zlymail == ""){ 
+            try { 
+                FileWriter fw = new FileWriter(f, true);
+                fw.write(user+";"+mail+";"+ pass+"\n");
+                fw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(LOGOWANIE.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Sproboj jeszcze raz", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+
         }
+        
+        
     }
     
 
@@ -355,6 +387,7 @@ public class LOGOWANIE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelComfirm;
     private javax.swing.JLabel jLabelEmail;
+    private javax.swing.JLabel jLabelEmailErr;
     private javax.swing.JLabel jLabelPass;
     private javax.swing.JLabel jLabelPassErr;
     private javax.swing.JLabel jLabelReg;
